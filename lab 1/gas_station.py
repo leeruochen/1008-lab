@@ -13,12 +13,17 @@ def min_stops(D, M, S):
 
         # Refuel if we can't reach the next station
         while current_fuel < distance:
+
             # TODO handle unable to reach station
-            if M < distance:
+            if M <= distance:
                 return -1  # Can't reach the station even with a full tank
+            
             # TODO Refuel from the largest fuel station we've passed
-            current_fuel += -heapq.heappop(max_heap)  # Refuel from the station with the most fuel
+            # a heap always has the either the largest or smallest element at the top, heapq is a min-heap, so we push negative values to simulate a max-heap
+            # when we pop the heap, we negate the value to get the original fuel amount
+            current_fuel += -heapq.heappop(max_heap)  # simulates a max-heap by negating the values, this gives us the largest fuel amount available
             num_stops += 1
+
             # TODO Clear the heap
             max_heap.clear()
 
