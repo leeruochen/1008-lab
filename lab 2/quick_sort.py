@@ -23,6 +23,15 @@ def randomized_partition(arr, low, high):
 def kth_smallest(arr, low, high, k):
     
     # TODO: Complete the function
+    if low <= high: # if range is valid, get the pivot index
+        pivot_index = randomized_partition(arr, low, high)
+
+        if pivot_index == k - 1: # if pivot index is the same as k-1, we found the k-th smallest element
+            return arr[pivot_index] 
+        elif pivot_index > k - 1: # else find the smallest in the left or biggest in right
+            return kth_smallest(arr, low, pivot_index - 1, k)
+        else:
+            return kth_smallest(arr, pivot_index + 1, high, k)
 
     return -1
 

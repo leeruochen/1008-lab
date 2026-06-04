@@ -14,7 +14,11 @@ def import_numbers_from_file(filename):
 
 def merge_sort(arr, left, right):
     # TODO Your code here
-    pass
+    if left < right:
+        mid = (left + right) // 2
+        merge_sort(arr, left, mid)
+        merge_sort(arr, mid + 1, right)
+        merge(arr, left, mid, right)
 
 def merge(arr, left, mid, right):
     L = arr[left:mid+1]
@@ -24,6 +28,14 @@ def merge(arr, left, mid, right):
     k = left
 
     # TODO Your code here
+    while i < len(L) and j < len(R):
+        if L[i] <= R[j]:
+            arr[k] = L[i]
+            i += 1
+        else:
+            arr[k] = R[j]
+            j += 1
+        k += 1
 
     while i < len(L):
         arr[k] = L[i]
