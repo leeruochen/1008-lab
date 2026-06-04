@@ -16,9 +16,9 @@ def merge_sort(arr, left, right):
     # TODO Your code here
     if left < right:
         mid = (left + right) // 2
-        merge_sort(arr, left, mid)
-        merge_sort(arr, mid + 1, right)
-        merge(arr, left, mid, right)
+        merge_sort(arr, left, mid) # recursively sort the original array into two halves
+        merge_sort(arr, mid + 1, right) 
+        merge(arr, left, mid, right) # merge the two halves together in sorted order
 
 def merge(arr, left, mid, right):
     L = arr[left:mid+1]
